@@ -6,39 +6,39 @@
 
 # Values in column names 
 
-raw <- read.csv("data/pew.csv", check.names = F)
+raw1 <- read.csv("data/pew.csv", check.names = F)
 
-head(raw)
+head(raw1)
 
 library(reshape2)
-tidy <- melt(raw, id = "religion")
+tidy <- melt(raw1, id = "religion")
 
-head(raw)
+head(raw1)
 head(tidy)
 
 names(tidy) <- c("religion", "income", "n")
-tidy <- melt(raw, id = "religion", 
+tidy <- melt(raw1, id = "religion", 
   variable.name = "income", value.name = "n")
 
 # Variable names in cells
 
-raw <- read.delim("data/weather.txt", check.names = F, na.strings = ".")
+raw1 <- read.delim("data/weather.txt", check.names = F, na.strings = ".")
 
 # Your Turn
 # ------------------------------------------
-raw <- melt(raw, 
+raw1 <- melt(raw1, 
   id = c("year", "month", "element"),
   variable.name = "day", na.rm = TRUE)
-raw$day <- as.numeric(as.character(raw$day))
-raw <- raw[, c("year", "month", "day", "element", "value")]
+raw1$day <- as.numeric(as.character(raw1$day))
+raw1 <- raw1[, c("year", "month", "day", "element", "value")]
 # ------------------------------------------
 
-head(raw)
+head(raw1)
 
-tidy <- dcast(raw, year + month + day ~ element, 
+tidy <- dcast(raw1, year + month + day ~ element, 
   value.var = "value")
 
-tidy <- dcast(raw, ... ~ element, value.var = "value")
+tidy <- dcast(raw1, ... ~ element, value.var = "value")
 
 titanic2 <- read.csv("data/titanic2.csv",
   stringsAsFactors = FALSE)
